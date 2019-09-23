@@ -1,0 +1,11 @@
+*** FR ***
+Pour faire apparaitre un logo revendeur JPG,PNG ou GIF, l'enregistrer dans le dossier « logo »  sous le nom « logo ».
+
+*** EN ***
+Reseller logo (JPG,PNG or GIF) must be located in 'logo' folder and named 'logo'.
+
+*** DE ***
+Logo von Vertriebspartner muss im ordner 'logo' abgelegt sein und der Name 'logo'.
+
+*** ES ***
+Para que aparezca un logotipo (JPG, PNG o GIF), guárdelo en la carpeta 'logo' con el nombre 'logo'.
