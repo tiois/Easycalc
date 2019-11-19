@@ -28,6 +28,12 @@ input::-ms-reveal {
 	width:0;
 	height:0;
 }
+.greenEstimateTitle {
+	margin:-6px 0 6px 0 !important;
+	padding:1px 10px 1px 5px !important;
+	color:#FAFAFA !important;
+	background:#00783F !important;
+}
 body {
 	position:relative;
 	-webkit-user-select:none;
@@ -76,6 +82,9 @@ textarea {
 }
 .font11 {
 	font-size:11px !important;
+}
+.font10 {
+	font-size:10px !important;
 }
 .centeredInput {
 	padding-top:2px !important;
@@ -282,7 +291,7 @@ textarea {
 	background:url(../images/go-to-bottom.svg) center center no-repeat #00783F;
 }
 .gotobottomprices {
-	top:240px !important;
+	top:280px !important;
 }
 .gotobottomhistory {
 	top:143px !important;
@@ -1877,7 +1886,7 @@ textarea {
 	font-size:11px;
 	text-align:center;
 	line-height:12px;
-	text-transform:uppercase;
+	/*text-transform:uppercase;*/
 	color:#003662;
 	z-index:9998;
 }
@@ -1935,6 +1944,10 @@ textarea {
 .spacer {
 	position:relative;
 	height:20px;
+}
+.spacer-estimate {
+	position:relative;
+	height:70px;
 }
 #fullscreenoptions {
 	position:relative;
@@ -2300,7 +2313,7 @@ textarea {
 	font-size:24px;
 	text-align:center;
 	line-height:35px;
-	color:#CF005F;
+	color:#F2CE13;
 	background:url(../images/warning.png) no-repeat center bottom;
 	cursor:pointer;
 }
@@ -2402,16 +2415,16 @@ textarea {
 }
 .setPriceWarning {
 	position:absolute;
-	top:14px;
+	top:16px;
 	left:-14px;
-	width:20px;
-	height:20px;
-	border-radius:10px;
+	width:16px;
+	height:16px;
+	border-radius:100%;
 	background:5px 5px no-repeat none;
 	z-index:1;
 }
 .setPriceWarningImg {
-	background:url(../images/warning.png) 5px 5px no-repeat #CF005F !important;
+	background:url(../images/warning.png) 3px 3px no-repeat #F2CE13 !important;
 }
 #History-container, #History-mask {
 	background:#92389F;
@@ -2758,6 +2771,7 @@ textarea {
 	left:50%;
 	width:90%;
 	transform:translate(-50%,0);
+	cursor:pointer;
 }
 .mosaic-packaging {
 	display:inline-block;
@@ -3503,6 +3517,7 @@ textarea {
 	width:280px;
 	font-size:9px;
 	text-align:right;
+	cursor:zoom-in;
 }
 .pointer:hover, .currencyCoin:hover, .rightmenudocBox:hover {
 	opacity:1 !important;
@@ -3857,6 +3872,7 @@ select.tableCell {
 	color:#FFF;
 	background:url(../images/period.svg) center no-repeat;
 	float:right;
+	cursor:pointer;
 }
 .forfree {
 	display:none;
@@ -3920,11 +3936,12 @@ select.tableCell {
 .discountprice-container {
 	display:none;
 	position:absolute;
+	top:87px;
 	right:10px;
-	margin-top:38px;
+	z-index:10 !important;
 }
 .discountUp {
-	margin-top:30px !important;
+	top:77px !important;
 }
 .close-discount {
 	position:relative;
@@ -4019,7 +4036,7 @@ select.tableCell {
 	font-weight:700;
 	text-align:right;
 	line-height:14px;
-	color:#003762;
+	color:#003762 !important;
 	border-right:none;
 	border-bottom:1px solid #DDD;
 	border-left:1px solid #DDD;
@@ -4082,6 +4099,9 @@ select.tableCell {
 	text-align:right;
 	line-height:8px;
 	color:#00599D;
+}
+.whiteColor {
+	color:white !important;
 }
 .sheetVersion {
 	top:54px;
@@ -4170,6 +4190,7 @@ select.tableCell {
 	float:none;
 }
 .sheettitlecat {
+	display:inline-block;
 	margin:-5px 0 7px 0;
 	font-size:17px;
 	font-weight:bold;
@@ -4177,7 +4198,7 @@ select.tableCell {
 	text-transform:uppercase;
 	color:#00599D;
 }
-.sheetproductBox, .sheetcalcUPBox, .sheetcalcpriceBox, .sheetcostperanimBox {
+.sheetproductBox, .sheetcalcUPBox, .sheetPeriodBox, .sheetcalcpriceBox, .sheetcostperanimBox {
 	width:200px;
 	float:left;
 }
@@ -4185,7 +4206,7 @@ select.tableCell {
 	width:70px;
 	text-align:center;
 }
-.sheetproductBox {
+.sheetproductBox, .sheetPeriodBox {
 	width:180px;
 }
 .sheetcostperanimBox {
@@ -4213,6 +4234,14 @@ select.tableCell {
 }
 .discounted {
 	color:#00599D !important;
+}
+.discountedbkg {
+	color:#FAFAFA !important;
+	background:#00599D !important;
+}
+.greenbkg {
+	color:#FAFAFA !important;
+	background:#00783F !important;
 }
 .sheetsubtotalBox, .sheettotalBox {
 	margin:2px 30px 0 0;
@@ -4319,12 +4348,12 @@ select.tableCell {
 .sheetlogofooterAG {
 	position:absolute;
 	right:50px;
-	bottom:30px;
+	bottom:35px;
 	width:170px;
 }
 .sheetlogofooterDistrib {
 	position:absolute;
-	bottom:30px;
+	bottom:35px;
 	left:50px;
 	max-width:170px;
 	max-height:140px;
