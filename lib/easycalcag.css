@@ -3464,6 +3464,15 @@ textarea {
 	text-align:right;
 	color:#003762;
 }
+.consinfoeaudouce {
+	padding: 5px 0;
+}
+
+.consinfoeaudouce label {
+	font-size: 11px;
+	display: inline-block;
+}
+
 .packinfo {
 	display:none;
 	position:relative;
