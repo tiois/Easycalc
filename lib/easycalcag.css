@@ -4208,11 +4208,11 @@ select.tableCell {
 	color:#00599D;
 }
 .sheetproductBox, .sheetcalcUPBox, .sheetPeriodBox, .sheetcalcpriceBox, .sheetcostperanimBox {
-	width:200px;
+	width:180px;
 	float:left;
 }
 .sheetcalcpriceBox {
-	width:70px;
+	width:80px;
 	text-align:center;
 }
 .sheetproductBox, .sheetPeriodBox {
@@ -4240,6 +4240,7 @@ select.tableCell {
 .sheetcalcprice {
 	font-weight:bold;
 	color:#000;
+	white-space: nowrap;
 }
 .discounted {
 	color:#00599D !important;
