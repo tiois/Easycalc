@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "publish": "electron-builder build --mac --win -p always"
+    "publish": "electron-builder build --win -p always"
   },
   "devDependencies": {
     "electron-builder": "^21.2.0"
