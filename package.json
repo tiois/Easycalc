@@ -1,11 +1,11 @@
 {
   "name": "Easycalc",
-  "version": "2.1.5",
+  "version": "2.1.4",
   "description": "",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "publish": "electron-builder build --win -p always"
+    "publish": "electron-builder build --mac --win -p always"
   },
   "devDependencies": {
     "electron-builder": "^21.2.0"
@@ -15,7 +15,8 @@
       {
         "provider": "github",
         "owner": "tiois",
-        "repo": "Easycalc"
+        "repo": "Easycalc",
+        "releaseType": "release"
       }
     ]
   },
