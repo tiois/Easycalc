@@ -58,10 +58,11 @@ function createDefaultWindow() {
     win = new BrowserWindow({
         webPreferences: {
             allowRunningInsecureContent: true,
-            webSecurity: false
+            webSecurity: false,
+            nodeIntegration: true
         }
     });
-    // win.webContents.openDevTools();
+    win.webContents.openDevTools();
     win.on('closed', () => {
         win = null;
     });
@@ -72,6 +73,7 @@ autoUpdater.on('checking-for-update', () => {
     sendStatusToWindow('Checking for update...');
 })
 autoUpdater.on('update-available', (info) => {
+    win.webContents.send('update_available');
     sendStatusToWindow('Update available.');
 })
 autoUpdater.on('update-not-available', (info) => {
@@ -87,6 +89,7 @@ autoUpdater.on('download-progress', (progressObj) => {
     sendStatusToWindow(log_message);
 })
 autoUpdater.on('update-downloaded', (info) => {
+    win.webContents.send('update_downloaded');
     sendStatusToWindow('Update downloaded');
 });
 app.on('ready', function () {
@@ -112,4 +115,12 @@ app.on('window-all-closed', () => {
 app.on('ready', function () {
     autoUpdater.checkForUpdatesAndNotify();
     sendStatusToWindow('ready');
+});
+
+ipcMain.on('app_version', (event) => {
+  event.sender.send('app_version', { version: app.getVersion() });
+});
+
+ipcMain.on('restart_app', () => {
+  autoUpdater.quitAndInstall();
 });

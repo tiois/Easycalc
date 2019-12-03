@@ -5237,3 +5237,32 @@ input:checked ~ .nicecheckbox:after {
 	border:solid #FFF;
 	border-width:0 2px 2px 0;
 }
+
+/* Electron */
+#message {
+	padding: 0 0 15px 0;
+}
+
+#notification {
+	position: fixed;
+	bottom: 20px;
+	left: 20px;
+	width: 200px;
+	padding: 20px;
+	border-radius: 5px;
+	background-color: white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	font-size: 14px;
+	border: 1px solid #00783F;
+	z-index: 9999;
+}
+
+#notification button {
+	border: 1px solid #00783F;
+	background: #00783F;
+	color: #fff;
+}
+
+.hidden {
+	display: none;
+}
