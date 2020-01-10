@@ -1,6 +1,6 @@
-const { app, BrowserWindow, Menu, protocol, ipcMain } = require('electron');
+const {app, BrowserWindow, Menu, protocol, ipcMain, globalShortcut} = require('electron');
 const log = require('electron-log');
-const { autoUpdater } = require("electron-updater");
+const {autoUpdater} = require("electron-updater");
 
 //-------------------------------------------------------------------
 // Logging
@@ -32,7 +32,9 @@ if (process.platform === 'darwin') {
             {
                 label: 'Quit',
                 accelerator: 'Command+Q',
-                click() { app.quit(); }
+                click() {
+                    app.quit();
+                }
             },
         ]
     })
@@ -49,11 +51,13 @@ if (process.platform === 'darwin') {
 // that updates are working.
 //-------------------------------------------------------------------
 let win;
+let consoleVisible = false;
 
 function sendStatusToWindow(text) {
     log.info(text);
     win.webContents.send('message', text);
 }
+
 function createDefaultWindow() {
     win = new BrowserWindow({
         webPreferences: {
@@ -62,13 +66,29 @@ function createDefaultWindow() {
             nodeIntegration: true
         }
     });
-    win.webContents.openDevTools();
+
+
+    /**
+     * Permettre l'ouverture et fermeture de la console
+     */
+    globalShortcut.register('CommandOrControl+F12', () => {
+        if(consoleVisible){
+            win.webContents.closeDevTools();
+            consoleVisible = !consoleVisible;
+        }else{
+            win.webContents.openDevTools();
+            consoleVisible = !consoleVisible;
+        }
+    });
+
     win.on('closed', () => {
         win = null;
     });
+
     win.loadFile('Easycalc.html')
     return win;
 }
+
 autoUpdater.on('checking-for-update', () => {
     sendStatusToWindow('Checking for update...');
 })
@@ -118,9 +138,9 @@ app.on('ready', function () {
 });
 
 ipcMain.on('app_version', (event) => {
-  event.sender.send('app_version', { version: app.getVersion() });
+    event.sender.send('app_version', {version: app.getVersion()});
 });
 
 ipcMain.on('restart_app', () => {
-  autoUpdater.quitAndInstall();
+    autoUpdater.quitAndInstall();
 });
