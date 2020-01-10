@@ -5,14 +5,12 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "publish": "electron-builder build --win --mac --linux -p always",
+    "publish": "electron-builder build --win --mac -p always",
     "publish:win": "electron-builder build --win -p always",
     "publish:mac": "electron-builder build --mac -p always",
-    "publish:linux": "electron-builder build --linux -p always",
-    "build": "electron-builder build --win --mac --linux -p never",
+    "build": "electron-builder build --win --mac -p never",
     "build:win": "electron-builder build --win -p never",
-    "build:mac": "electron-builder build --mac -p never",
-    "build:linux": "electron-builder build --linux -p never"
+    "build:mac": "electron-builder build --mac -p never"
   },
   "devDependencies": {
     "electron": "^7.1.2",
