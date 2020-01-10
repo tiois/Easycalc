@@ -1,12 +1,18 @@
 {
   "name": "Easycalc",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "publish": "electron-builder build --win -p always",
-    "build": "electron-builder build --win -p never"
+    "publish": "electron-builder build --win --mac --linux -p always",
+    "publish:win": "electron-builder build --win -p always",
+    "publish:mac": "electron-builder build --mac -p always",
+    "publish:linux": "electron-builder build --linux -p always",
+    "build": "electron-builder build --win --mac --linux -p never",
+    "build:win": "electron-builder build --win -p never",
+    "build:mac": "electron-builder build --mac -p never",
+    "build:linux": "electron-builder build --linux -p never"
   },
   "devDependencies": {
     "electron": "^7.1.2",
