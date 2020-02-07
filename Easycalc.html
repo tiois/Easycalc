@@ -18,67 +18,71 @@
     <script src="lib/jquery.min.js"></script>
     <script>
 
-        function isElectron() {
-            // Renderer process
-            if ( typeof window !== 'undefined' && typeof window.process === 'object' && window.process.type === 'renderer' ) {
-                return true;
-            }
+		function isElectron() {
+			// Renderer process
+			if ( typeof window !== 'undefined' && typeof window.process === 'object' && window.process.type === 'renderer' ) {
+				return true;
+			}
 
-            // Main process
-            if ( typeof process !== 'undefined' && typeof process.versions === 'object' && !!process.versions.electron ) {
-                return true;
-            }
+			// Main process
+			if ( typeof process !== 'undefined' && typeof process.versions === 'object' && !!process.versions.electron ) {
+				return true;
+			}
 
-            // Detect the user agent when the `nodeIntegration` option is set to true
-            if ( typeof navigator === 'object' && typeof navigator.userAgent === 'string' && navigator.userAgent.indexOf( 'Electron' ) >= 0 ) {
-                return true;
-            }
+			// Detect the user agent when the `nodeIntegration` option is set to true
+			if ( typeof navigator === 'object' && typeof navigator.userAgent === 'string' && navigator.userAgent.indexOf( 'Electron' ) >= 0 ) {
+				return true;
+			}
 
-            return false;
-        }
+			return false;
+		}
+		var isApp            = isElectron();
+		var notification;
+		var baseResourcePath = '.';
 
-        var isApp            = isElectron();
-        var notification;
-        var baseResourcePath = '.';
+		if ( isApp ) {
+			baseResourcePath    = process.resourcesPath.replace( /\\/gi, "/" );
+			window.$            = window.jQuery = require( 'jquery' );
+			var { ipcRenderer } = require( 'electron' );
+		}
 
-        if ( isApp ) {
-            baseResourcePath    = process.resourcesPath.replace( /\\/gi, "/" );
-            window.$            = window.jQuery = require( 'jquery' );
-            var { ipcRenderer } = require( 'electron' );
-        }
+		function closeNotification() {
+			notification.classList.add( 'hidden' );
+		}
 
-        function closeNotification() {
-            notification.classList.add( 'hidden' );
-        }
+		function restartApp() {
+			ipcRenderer.send( 'restart_app' );
+		}
 
-        function restartApp() {
-            ipcRenderer.send( 'restart_app' );
-        }
+		$( function () {
+			if ( isApp ) {
+				notification        = document.getElementById( 'notification' );
+				const message       = document.getElementById( 'message' );
+				const restartButton = document.getElementById( 'restart-button' );
 
-        $( function () {
-            if ( isApp ) {
-                notification        = document.getElementById( 'notification' );
-                const message       = document.getElementById( 'message' );
-                const restartButton = document.getElementById( 'restart-button' );
+				ipcRenderer.on( 'update_available', () => {
+					ipcRenderer.removeAllListeners( 'update_available' );
+					message.innerText = 'A new update is available. Downloading now...';
+					notification.classList.remove( 'hidden' );
+				} );
 
-                ipcRenderer.on( 'update_available', () => {
-                    ipcRenderer.removeAllListeners( 'update_available' );
-                    message.innerText = 'A new update is available. Downloading now...';
-                    notification.classList.remove( 'hidden' );
-                } );
-
-                ipcRenderer.on( 'update_downloaded', () => {
-                    ipcRenderer.removeAllListeners( 'update_downloaded' );
-                    message.innerText = 'Update Downloaded. It will be installed on restart. Restart now?';
-                    restartButton.classList.remove( 'hidden' );
-                    notification.classList.remove( 'hidden' );
-                } );
-            }
-        } );
+				ipcRenderer.on( 'update_downloaded', () => {
+					ipcRenderer.removeAllListeners( 'update_downloaded' );
+					message.innerText = 'Update Downloaded. It will be installed on restart. Restart now?';
+					restartButton.classList.remove( 'hidden' );
+					notification.classList.remove( 'hidden' );
+				} );
+			}
+		} );
     </script>
     <script src="lib/jquery-plugins.js"></script>
     <script src="lib/product-img.js"></script>
     <script src="lib/easycalcag.js"></script>
+    <!--
+    <script>
+		var db = openDatabase( 'easycalc', '1.0', 'EasyCalc', 2 * 1024 * 1024, createDatabase );
+    </script>
+    -->
 </head>
 <body>
 <div id="notification"

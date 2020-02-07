@@ -1,14 +1,16 @@
 {
   "name": "Easycalc",
   "version": "2.1.5",
-  "description": "",
+  "description": "Easycalc",
+  "author": "Kersia-group",
+  "license": "SEE LICENSE IN LICENSE",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
     "publish": "electron-builder build --win --mac -p always",
     "publish:win": "electron-builder build --win -p always",
     "publish:mac": "electron-builder build --mac -p always",
-    "build": "electron-builder build --win --mac -p never",
+    "build": "electron-builder build --win -p never",
     "build:win": "electron-builder build --win -p never",
     "build:mac": "electron-builder build --mac -p never"
   },
@@ -46,6 +48,7 @@
     ]
   },
   "dependencies": {
+    "bootstrap": "^4.4.1",
     "build": "^0.1.4",
     "electron-log": "^3.0.9",
     "electron-updater": "^4.2.0",
