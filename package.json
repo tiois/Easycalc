@@ -48,7 +48,6 @@
     ]
   },
   "dependencies": {
-    "bootstrap": "^4.4.1",
     "build": "^0.1.4",
     "electron-log": "^3.0.9",
     "electron-updater": "^4.2.0",
