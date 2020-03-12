@@ -22,7 +22,7 @@
     "publish": [
       {
         "provider": "github",
-        "owner": "tiois",
+        "owner": "LaboratoiresChoisy",
         "repo": "Easycalc",
         "releaseType": "release"
       }
