@@ -51,6 +51,6 @@
     "build": "^0.1.4",
     "electron-log": "^3.0.9",
     "electron-updater": "^4.2.0",
-    "jquery": "^2.2.4"
+    "jquery": "^3.4.0"
   }
 }
